@@ -1,0 +1,80 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.flex-container{
+    display: flex;
+}
+
+body{
+    background: #aaff88;
+}
+
+#nav-bar{
+    display: flex;
+
+    justify-content: space-between;
+
+    width: 800px;
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+    margin-top: 50px;
+}
+
+#content-container{
+    width: 850px;
+    padding: 10px;
+    background-color: #ffffff55;
+
+    margin-right: auto;
+
+    margin-left: auto;
+
+    margin-top: 100px;
+
+    position: relative;
+}
+
+#bill-table{
+
+    width: 100%;
+}
+
+#bill-table tr:nth-child(even) {
+    background-color: #ffffff77;
+}
+#bill-table tr:nth-child(odd) {
+    background-color: #ffffffcc;
+  }
+
+th{
+    text-align: left;
+    padding: 5px;
+
+    padding-left: 10px;
+
+    color: #002244;
+}
+
+#new-bill-button{
+    background-color: #ffffff99;
+    color: #002244;
+    text-align: center;
+
+    padding: 3px;
+
+    width: 50px;
+
+    border-radius: 10px;
+
+    margin-top: 5px;
+
+    font-size: 26px;
+}
+
+#bill-button-flex{
+    justify-content: right;
+}
