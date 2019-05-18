@@ -1,33 +1,84 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
+{{!-- Setup the `index.handlebars` to have the template that Handlebars can render onto. --}}
+<div class="container">
+  <div class="col-md-12 d-flex justify-content-center p-3">
+    <img src="../public/assets/img/burgerImages.jpeg" alt="guy eating burger">
+  </div>
+  <div class="col-md-12 p-3">
+    <h1 class="d-flex justify-content-center">Eat-Da-Burger!</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-6" id="notDevoured">
+      <ul>
+        {{#each burger}}
+        {{#unless devoured}}
+        {{> burger/burger-block devoured=true}}
+        {{/unless}}
+        {{/each}}
+      </ul>
+
+    </div>
+    <div class="col-md-6" id="devour">
+      <ul>
+        {{#each burger}}
+        {{#if devoured}}
+        {{> burger/burger-block devoured=false}}
+        {{/if}}
+        {{/each}}
+      </ul>
     </div>
   </div>
+
+  <div class="col-mg-12 p-3">
+    <form class="create-form">
+      <div class="form-group d-flex justify-content-center">
+        <label for="burger">Burger Name: </label>
+        <input type="text" id="burger" name="burger_name">
+        <button type="submit">Add Burger</button>
+      </div>
+    </form>
+  </div>
+
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+<script>
+  $(".change-devoured").on("click", function (event) {
+    var id = $(this).data("id");
+
+    var nowDevouredState = {
+      devoured: 1
+    };
+
+    // Send the PUT request.
+    $.ajax("/api/burger/" + id, {
+      type: "PUT",
+      data: nowDevouredState
+    }).then(
+      function () {
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+  $(".create-form").on("submit", function (event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+
+    var newBurger = {
+      burger_name: $("#burger").val().trim(),
+      devoured: 0
+    };
+
+    // Send the POST request.
+    $.ajax("/api/burger", {
+      type: "POST",
+      data: newBurger
+    }).then(
+      function () {
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+</script>
