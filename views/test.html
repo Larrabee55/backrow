@@ -25,14 +25,17 @@
     <div id = "content-container">
         <table id = "bill-table" >
             <tr>
-            <th><b>Bills</b></th>
-            <th><b>Amount</b></th>
-            <th><b>Due</b></th>
+                <th><b>Bills</b></th>
+                <th><b>Amount</b></th>
+                <th><b>Due</b></th>
             </tr>
             <tr>
                 <th>Some Sort of Bill</th>
                 <th>$1000</th>
-                <th>2/14/1879</th>
+                <th position= "relative">2/14/1879
+                    <img class = "edit-button" src="assets/images/edit.png" width= "18px">
+                    <img class = "delete-button" src="assets/images/delete.png" width= "16px">
+                </th>
             </tr>
             <tr>
                 <th>bla</th>
@@ -43,6 +46,12 @@
         <div class = "flex-container" id = "bill-button-flex">
             <div id = "new-bill-button">+</div>
         </div>
+        <table id = "total-table" >
+            <tr>
+                <th width = "372px"><b>Total:</b></th>
+                <th width = "207px" id = "total-row"><b>$1000000</b></th>
+            </tr>
+        </table>
     </div>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="/js/index.js"></script>

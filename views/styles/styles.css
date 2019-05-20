@@ -43,10 +43,10 @@ body{
     width: 100%;
 }
 
-#bill-table tr:nth-child(even) {
+table tr:nth-child(even) {
     background-color: #ffffff77;
 }
-#bill-table tr:nth-child(odd) {
+table tr:nth-child(odd) {
     background-color: #ffffffcc;
   }
 
@@ -73,8 +73,22 @@ th{
     margin-top: 5px;
 
     font-size: 26px;
+
+    opacity: .7;
 }
 
 #bill-button-flex{
     justify-content: right;
+}
+
+.edit-button{
+    position: absolute;
+    right: 32px;
+    opacity: .5;
+}
+
+.delete-button{
+    position: absolute;
+    right: 15px;
+    opacity: .5;
 }
