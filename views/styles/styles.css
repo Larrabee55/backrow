@@ -57,9 +57,11 @@ th{
     padding-left: 10px;
 
     color: #002244;
+
+    width: 37%;
 }
 
-#new-bill-button{
+.button{
     background-color: #ffffff99;
     color: #002244;
     text-align: center;
@@ -83,7 +85,7 @@ th{
     -moz-user-select: none;
 }
 
-#bill-button-flex{
+#button-flex{
     justify-content: right;
 }
 
@@ -106,4 +108,14 @@ th{
     cursor: pointer;
 
     margin-top: -17px;
+}
+
+input{
+    border: none;
+
+    padding: 3px;
+
+    font-size: 18px;
+
+    border-radius: 3px;
 }
